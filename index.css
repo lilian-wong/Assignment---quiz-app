@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    text-align: center;
+}
+#heading{
+    background: rgb(201, 196, 196);
+    padding-top: 30px;
+    text-align: center;
+    height: 100px;
+}
+#quiz-container{
+    border: 2px solid black;
+    width: 800px;
+    height: 500px;
+    margin-top:50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button{
+    font-size: 20px;
+}
