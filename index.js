@@ -11,60 +11,66 @@ a response will then passed to a function to */
 //set initial score and questions;
 const finalScore = 0;
 const questionIndex = 0;
+const numOfQuestion = questionIndex + 1;
 let numOfIncorrect = 0;
 
-//function get score
+//Create multiple choices 
 function getChoiceElement(choiceItem){
-let choiceElements = '';
-let choiceLetter = ['A','B','C','D'];
-let i = 0;
-choiceItem.forEach(function(choice){
-choiceElements +=`<input type="radio" name="choice" value="choice"/>
-<label for="choice"> ${choiceLetter[i]} ${choice} </label><br>`;
-i++;});
-console.log(choiceElements);
-return choiceElements;
+    let choiceElements = '';
+    let choiceLetter = ['A','B','C','D'];
+    let i = 0;
+    choiceItem.forEach(function(choice){
+    choiceElements +=`<input type="radio" name="choice" required value=${choice}>
+    <label for="choice"> ${choiceLetter[i]}. ${choice} </label><br>`;
+    i++;});
+    return choiceElements;
 }
 
-//generate questions
+//Create quiz questions
 function getQuestionsElement(questionItem){
-let numOfQuestion = questionIndex + 1;
-let numOfCorrect = finalScore;
-let choice = questionItem.choice;
-return `
-<p id= ${questionItem.quizID}>Question 1 of 10</p>
-<p id='nthQuestion'>${questionItem.question}</p>
-${getChoiceElement(choice)}
-<button type="button" id="submitButton">Submit</button>
-<p>Current Score: ${numOfCorrect} correct, ${numOfIncorrect} incorrect</p>
-`
+    let numOfCorrect = finalScore;
+    let choice = questionItem.choice;
+    let formElement = `
+    <p id= ${questionItem.quizID}>Question 1 of 10</p>
+    <p id='nthQuestion'>${questionItem.question}</p>
+    ${getChoiceElement(choice)}
+    <button type="submit" class="submitButton">Submit</button>
+    <p class="currentScore">Current Score: ${numOfCorrect} correct, ${numOfIncorrect} incorrect</p>
+    `;
+    return formElement;
 }
 
+//response to submit
+function updateQuizForm(){
+    $('.submitButton').append('<p>testing</p>');
+}
 //Handle submit button
 function handleSubmit(){
-$('#submitButton').on('click', function(event){
-    event.preventDefault();
-});
-}
-//generate answers
-function getAnswerElement(choiceItem){
-    let listOfAnswers = '';
-    choiceItem.forEach(choice => {
-        
+    $('#quiz-container').on('submit', function (event) {
+        event.preventDefault();
+        let selected= $('input:checked');
+        let selectedChoice = selected.val();
+        if(checkAnswer(selectedChoice)===true){
+        }
+        else{
+        }
+        updateQuizForm();
     });
 }
-//function to update quiz form
-function updateQuizForm(){
-//load Question nth of 10
-//load generated questions
-//load finalScore
+//generate answers
+function checkAnswer(selectedChoice){
+    let ans = quizQuestions[questionIndex].answer;
+    if(selectedChoice===ans){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
-//function to start quiz
+//function to start quiz,generate questions,update quiz form
 function startQuiz(){
-//generate questions
-//update quiz form
-$('#startButton').on('click',function(event){
+    $('#quiz-container').on('click','#startButton', function(event){
     event.preventDefault();
     $('#quiz-title').hide();
     $('#quizformClipArt').hide();
@@ -72,9 +78,6 @@ $('#startButton').on('click',function(event){
     $('fieldset').html(getQuestionsElement(questionItem));
 });
 }
-
-//function to check answer
-function checkAnswer(){}
 
 //function to restart quiz
 function restartQuiz(){
@@ -85,6 +88,7 @@ function restartQuiz(){
 
 function loadQuiz(){
     startQuiz();
+    handleSubmit();
 }
 
 $(loadQuiz);

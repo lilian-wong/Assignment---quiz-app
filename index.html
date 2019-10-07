@@ -1,3 +1,4 @@
+<!--This is a FICO Credit Scores Quiz-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,45 +12,22 @@
     </head>
     <body>
         <div id="heading">
-        <header><h1>FICO Credit Scores Quiz</h1></header>
+            <header><h1 id="quiz-header">FICO Credit Scores Quiz</h1></header>
         </div>
         <main role='main' id="quiz-container">
             <form id = "creditScore-quizApp-form">
-                <p id="quiz-title"><h2>What you know about FICO Scores?</h2></p>
-                <h3>Total Questions: 10</h3>
-                <button type="button">Start the quiz</button>      
-                <!--Questions screen-->
-                <p>Question 1 of 10</p>
-                <p>Q1. FICO Scores are used in over __% of U.S. lending decisions.</p>
-                <input type="radio" name="choice" value="choiceA"/>
-                <label for="choice">A.10%</label><br>
-                <input type="radio" name="choice" value="choiceB"/>
-                <label for="choice">B.82%</label><br>
-                <input type="radio" name="choice" value="choiceC"/>
-                <label for="choice">C.60%</label><br>
-                <input type="radio" name="choice" value="choiceD"/>
-                <label for="choice">D.90%</label><br>
-                <button type="button">Submit</button>
-                <p>Current Score: 0 correct, 0 incorrect</p>
-                <!--Anwer screen after submit button is clicked-->
-                <p>Question 1 of 10</p>
-                <p>Q1. FICO Scores are used in over __% of U.S. lending decisions.</p>
-                <input type="radio" name="choice" value="choiceA"/>
-                <label for="choice">A.10%</label><br>
-                <input type="radio" name="choice" value="choiceB" checked/>
-                <label for="choice">B.82% <span style="color:red">Incorrect</span></label><br>
-                <input type="radio" name="choice" value="choiceC"/>
-                <label for="choice">C.60%</label><br>
-                <input type="radio" name="choice" value="choiceD"/>
-                <label for="choice">D.90%</label><br>
-                <p>Good try! The correct answer is D - 90%.</p>
-                <button type="button">Next</button>
-                <p>Current Score: 0 correct, 1 incorrect</p>
-                </div>        
-                <!--Final score screen-->
-                <p>Your Total Score: 10 out of 10</p>
-                <button type="button">Retake the quiz</button>
+            <fieldset>
+                <h2 id="quiz-title">What you know about FICO Scores?</h2>
+                <img src="images/QuestionPic_1869413.jpg" id="quizformClipArt" 
+                height="380" width="500" alt="credit score clipart">
+                <h3 id="totalQuizQuestions">Total Questions: 10</h3>
+                <button type="button" id="startButton">Start the quiz</button>      
+            </fieldset>
             </form> 
         </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="questions.js"></script>
+        <script type="text/javascript" src="index.js"></script>
     </body>
-</html>
+</html> 
