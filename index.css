@@ -5,47 +5,48 @@
 }
 
 body{
-    background: rgb(197, 218, 231);
+    text-align: center;
+    background-color:#464249;
 }
 
 #heading{
-    background: rgb(197, 218, 231);
-    padding-top: 30px;
+    background-color:#464249;
+    padding-top: 20px;
     text-align: center;
-    height: 120px;
+    height: 150px;
+    color: #ECF0F1;
 }
 
-#FICO_logo{
+#creditScore_logo{
     height: 80px;
     width: 80px;
-    border-radius: 50%;
-}
+    border-radius: 80%;
+    margin-top: 10px;
 
-main{
-    display: flex;
-    text-align: center;
-    padding: 30px; 
-    padding-left: 100px;
-    padding-right: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    
 }
-
+.question{
+    text-align: left;
+}
+#q_{
+    text-align: right;  
+}
+fieldset{
+    width: 80%;
+    padding: 0;
+    padding-top:20px;
+    margin-top:30px;
+    margin: 0 auto;
+    border: none;
+    margin-bottom:20px;
+}
 #creditScore-quizApp-form{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
     background-color: white;
 }
-
-#creditScore-quizApp-form .fieldset{
-    width:500px;
-    padding: 100px;
-    margin-left: 200px;
-    margin-right: 200px;
-    background-color: white;
-}
-
-.question .choices{
+.choices{
     text-align:left;
     padding:20px;
 }
@@ -53,6 +54,7 @@ main{
 p{
     padding: 10px;
 }
+
 .wrong-msg{
     color: red;
 }
@@ -68,7 +70,7 @@ p{
 }
 
 button{
-	box-shadow:inset 0px -3px 7px 0px #29bbff;
+    box-shadow:inset 0px -3px 7px 0px #29bbff;
 	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
 	border-radius:3px;
 	border:1px solid #0b0e07;
@@ -82,14 +84,35 @@ button{
     width: 400px;
 }
 
-@media all and (max-width: 320px){
-    body { 
-        font-size: 80%; 
-        text-align: center;
-     }
-     button{
+
+@media all and (max-width: 640px){
+    #creditScore-quizApp-form{
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+}
+@media all and (max-width: 500px){
+    button{
         width: 100%;
     }
-   
-    
+    #quiz-title{
+        font-size: 17px;
+        padding-left:0;
+    }
+}
+@media all and (max-width: 320px){    
+    #creditScore-quizApp-form{
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    button{
+        width: 100%;
+    }
+    #picture{
+        max-width: 100%;
+        height:auto;
+    }
+    #quiz-title{
+        font-size: 16px;
+    }
 }
