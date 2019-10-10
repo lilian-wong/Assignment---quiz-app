@@ -59,8 +59,10 @@ function getQuestionsElement(questionItem){
     let choice = questionItem.choice;
     let formElement = `
     <fieldset class="quiz-content">
-        <section class="question">
+        <section class="number-of-question">
             <p id= q_${questionItem.quizID}>Question ${numOfQuestion} of 10</p>
+        </section>
+        <section class="question">
             <p>${questionItem.question}</p>
         </section>
         <section class="choices">
@@ -123,13 +125,15 @@ function handleFinalScore(){
     $('#creditScore-quizApp-form').on('click', '.finalButton', function(event){
         event.preventDefault();
         $('#creditScore-quizApp-form').html(`
+        <fieldset class="quiz-content">
         <section class="subTitle">
             <h2 id="quiz-title">Your Final Score: ${scoreCard.getCorrect()} out of ${totalQuestion}</h2>
         </section>
         <section id="picture">
             <img src="images/creditScore_istockphoto.jpg" class="quizformClipArt" height="380" width="500" alt="credit score clipart">
         </section>
-            <button type="button" class="restartButton">Retake quiz</button>`);
+            <button type="button" class="restartButton">Retake quiz</button>
+        </fieldset>`);
     });  
 }
 //function to restart quiz
