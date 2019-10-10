@@ -11,13 +11,13 @@ body{
     text-align: center;
     background-color:#464249;
 }
-
-
 #heading{
     background-color:#464249;
     padding-top: 20px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
     text-align: center;
-    height: 150px;
+    height: 110px;
     color: #ECF0F1;
 }
 
@@ -39,22 +39,26 @@ body{
 #q_{
     text-align: right;  
 }
-fieldset{
-    width: 80%;
-    padding: 0;
-    padding-top:20px;
-    margin-top:30px;
-    margin: 0 auto;
-    border: none;
-    margin-bottom:20px;
-}
+
 #creditScore-quizApp-form{
     display: flex;
     margin-top: 10px;
     margin-left: 8%;
     margin-right: 8%;
-    background-color: white;
+    padding-bottom: 10px;
+    background-color:white;
+
 }
+fieldset{
+    width: 80%;
+    padding: 0;
+    padding-top:20px;
+    margin-top:10px;
+    margin: 0 auto;
+    border: none;
+    margin-bottom:20px;
+}
+
 .choices{
     text-align:left;
     padding:20px;
@@ -99,7 +103,7 @@ button{
     box-shadow:inset 0px -3px 7px 0px #ff9029;
     background:linear-gradient(to bottom, #e8f92d 5%, #fae206 100%);
     color:#1d0303;
-
+}
 
 @media all and (max-width: 646px){
     #creditScore-quizApp-form{
@@ -114,23 +118,40 @@ button{
         padding:10px;
     }
 }
-@media all and (max-width: 500px){
+@media all and (max-width: 520px){
     button{
         width: 100%;
     }
     .choices{
         padding:5px;
     }
-}
-@media all and (max-width: 320px){    
     #creditScore-quizApp-form{
-        margin-left: 2%;
-        margin-right: 2%;
+        width:100%;
+        margin-left: auto;
+        margin-right: auto;
+
     }
-    button{
-        width: 100%;
+}
+@media all and (max-width: 365px){
+    #quiz-header{
+        font-size: smaller;
     }
     #quiz-title{
-        font-size: 16px;
+        font-size: 15px;
+    }    
+    
+    #creditScore_logo{
+        height: 50px;
+        width: 50px;
+
+    }
+}
+@media all and (max-width: 320px){    
+    button{
+        width: 80%;
+    }
+    #creditScore_logo{
+        max-width: 100%;
+        height:auto;
     }
 }
