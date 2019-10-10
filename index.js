@@ -1,26 +1,54 @@
 'use strict';
 
-/*This quiz app loads preset questions to the screen
-Once a user click start button, it will reload the form and display question in order.
-All choices are set to be unchecked by default. The user can select only one of the answers. When the submit button is clicked,
-the user's selection is passed to be checked. If the answer match to the correct answer, "Correct" in green
-will be printed next to the selected answer; else "Incorrect"in read is printed next to the selected answer.
+/*This quiz app loads preset questions to the screen. Once a user click start button, it will reload the form and display question in order. All choices are set to be unchecked by default. The user can select only one of the answers. When the submit button is clicked,
+the user's selection is passed to be checked. If the answer match to the correct answer, "Correct" in green will be printed next to the selected answer; else "Incorrect"in read is printed next to the selected answer.
 a response will then passed to a function to */
 
+//set initial score
+let questionIndex = 0;
+let numOfQuestion = 1;
+const totalQuestion = quizQuestions.length;
 
-//set initial score and questions;
-const finalScore = 0;
-const questionIndex = 0;
-const numOfQuestion = questionIndex + 1;
-let numOfIncorrect = 0;
+//Move to the next question
+function updateQuestion(){
+    questionIndex++;
+    numOfQuestion++;
+}
+function displayQuizMain(){
+    $('#picture').append(`<p><h3 id="totalQuizQuestions"> Total Questions:${totalQuestion} </h3><p>`);
+    $('#scoreTracker').html(`<p class="currentScore">Current Score: ${scoreCard.getCorrect()} correct, ${scoreCard.getWrong()} incorrect</p>`);
+}
 
-//Create multiple choices 
+//Update score element
+function updateScoreElement(){
+    $('#scoreTracker').html(`<p class="currentScore">Current Score: ${scoreCard.getCorrect()} correct, ${scoreCard.getWrong()} incorrect</p>`);
+}
+//function to start quiz,generate questions,update quiz form
+function startQuiz(){
+    scoreCard.total =totalQuestion;
+    $('#scoreTracker').hide();
+    $('.quiz-content').on('click','#startButton', function(event){
+        event.preventDefault();
+        $('#quiz-title').hide();
+        $('#resultMessage').hide();
+        $('#quizformClipArt').hide();
+       loadQuestions();
+    });
+}
+
+// load questions screen
+function loadQuestions(){
+        $('#creditScore-quizApp-form').html(getQuestionsElement(quizQuestions[questionIndex]));
+        updateScoreElement();   
+}
+
+//Create multiple choices Elements
 function getChoiceElement(choiceItem){
     let choiceElements = '';
     let choiceLetter = ['A','B','C','D'];
     let i = 0;
     choiceItem.forEach(function(choice){
-    choiceElements +=`<input type="radio" name="choice" required value=${choice}>
+    choiceElements +=`<input type="radio" class="radioChoices" name="choice" required value=${choiceLetter[i]}>
     <label for="choice"> ${choiceLetter[i]}. ${choice} </label><br>`;
     i++;});
     return choiceElements;
@@ -28,67 +56,97 @@ function getChoiceElement(choiceItem){
 
 //Create quiz questions
 function getQuestionsElement(questionItem){
-    let numOfCorrect = finalScore;
     let choice = questionItem.choice;
     let formElement = `
-    <p id= ${questionItem.quizID}>Question 1 of 10</p>
-    <p id='nthQuestion'>${questionItem.question}</p>
-    ${getChoiceElement(choice)}
-    <button type="submit" class="submitButton">Submit</button>
-    <p class="currentScore">Current Score: ${numOfCorrect} correct, ${numOfIncorrect} incorrect</p>
+    <fieldset class="quiz-content">
+        <section class="question">
+            <p id= q_${questionItem.quizID}>Question ${numOfQuestion} of 10</p>
+            <p>${questionItem.question}</p>
+        </section>
+        <section class="choices">
+            <p>${getChoiceElement(choice)}</p>
+        </section>
+            <button type="submit" class="submitButton">Submit</button>
+            <section id="scoreTracker"></section>   
+    </fieldset>
     `;
     return formElement;
 }
 
-//response to submit
-function updateQuizForm(){
-    $('.submitButton').append('<p>testing</p>');
-}
 //Handle submit button
 function handleSubmit(){
-    $('#quiz-container').on('submit', function (event) {
+    $('#creditScore-quizApp-form').on('submit', function (event) {
         event.preventDefault();
         let selected= $('input:checked');
         let selectedChoice = selected.val();
         if(checkAnswer(selectedChoice)===true){
+            scoreCard.addCorrect();
+            $('.radioChoices:checked').next().append('<span class="correct-msg"> Correct </span>');
         }
         else{
+            scoreCard.addWrong();
+            $('.radioChoices:checked').next().append(`<span class="wrong-msg"> Incorrect 
+            - The correct answer is ${quizQuestions[questionIndex].ansID}, ${quizQuestions[questionIndex].answer}</span>`);
         }
-        updateQuizForm();
+        updateScoreElement();
+        if(questionIndex<totalQuestion-1){
+            $('.submitButton').replaceWith(`<button type="button" class="nextButton">Next</button>`);
+        }
+        else{
+            $('.submitButton').replaceWith(`<button type="button" class="finalButton">Get your final score</button>`);
+        }
+        $('.radioChoices').attr('disabled',true);
+        $('resultMessage').html(`<p class="currentScore"> </p>`);
     });
 }
-//generate answers
+
+//Check answer
 function checkAnswer(selectedChoice){
-    let ans = quizQuestions[questionIndex].answer;
-    if(selectedChoice===ans){
-        return true;
-    }
-    else{
-        return false;
-    }
+    let ans = quizQuestions[questionIndex].ansID;
+    if(selectedChoice===ans){return true;}
+    else{return false;}
 }
 
-//function to start quiz,generate questions,update quiz form
-function startQuiz(){
-    $('#quiz-container').on('click','#startButton', function(event){
-    event.preventDefault();
-    $('#quiz-title').hide();
-    $('#quizformClipArt').hide();
-    let questionItem = quizQuestions[questionIndex];
-    $('fieldset').html(getQuestionsElement(questionItem));
-});
+//Handle next button
+function handleNext(){
+    $('#creditScore-quizApp-form').on('click', '.nextButton', function(event){
+        event.preventDefault();
+        updateQuestion();
+        $('fieldset').replaceWith(getQuestionsElement(quizQuestions[questionIndex]));
+        updateScoreElement();
+        loadQuestions();
+    });
 }
 
+//Print final score
+function handleFinalScore(){
+    $('#creditScore-quizApp-form').on('click', '.finalButton', function(event){
+        event.preventDefault();
+        $('#creditScore-quizApp-form').html(`
+        <section class="subTitle">
+            <h2 id="quiz-title">Your Final Score: ${scoreCard.getCorrect()} out of ${totalQuestion}</h2>
+        </section>
+        <section id="picture">
+            <img src="images/creditScore_istockphoto.jpg" class="quizformClipArt" height="380" width="500" alt="credit score clipart">
+        </section>
+            <button type="button" class="restartButton">Retake quiz</button>`);
+    });  
+}
 //function to restart quiz
 function restartQuiz(){
-//generate questions  
-    location.reload()
+    $('#creditScore-quizApp-form').on('click', '.restartButton', function(event){
+        event.preventDefault();
+        location.reload();
+    });
 }
 
-
 function loadQuiz(){
+    displayQuizMain();
     startQuiz();
     handleSubmit();
+    handleNext();
+    handleFinalScore();
+    restartQuiz();
 }
 
 $(loadQuiz);

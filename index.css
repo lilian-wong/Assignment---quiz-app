@@ -1,26 +1,95 @@
 *{
     box-sizing: border-box;
     margin: 0;
-}
-body{
-    text-align: center;
-}
-#heading{
-    background: rgb(201, 196, 196);
-    padding-top: 30px;
-    text-align: center;
-    height: 100px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-#quiz-container{
-    border: 2px solid black;
-    width: 800px;
-    height: 500px;
-    margin-top:50px;
+body{
+    background: rgb(197, 218, 231);
+}
+
+#heading{
+    background: rgb(197, 218, 231);
+    padding-top: 30px;
+    text-align: center;
+    height: 120px;
+}
+
+#FICO_logo{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+main{
+    display: flex;
+    text-align: center;
+    padding: 30px; 
+    padding-left: 100px;
+    padding-right: 100px;
     margin-left: auto;
     margin-right: auto;
+    justify-content: center;
+    
+}
+
+#creditScore-quizApp-form{
+    background-color: white;
+}
+
+#creditScore-quizApp-form .fieldset{
+    width:500px;
+    padding: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: white;
+}
+
+.question .choices{
+    text-align:left;
+    padding:20px;
+}
+
+p{
+    padding: 10px;
+}
+.wrong-msg{
+    color: red;
+}
+
+.correct-msg{
+    color: green;
+}
+
+.quizformClipArt{
+    padding:20px;
+    width: 300px;
+    height: 300px;
 }
 
 button{
-    font-size: 20px;
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:20px;
+    padding:9px 23px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #263666;
+    width: 400px;
+}
+
+@media all and (max-width: 320px){
+    body { 
+        font-size: 80%; 
+        text-align: center;
+     }
+     button{
+        width: 100%;
+    }
+   
+    
 }

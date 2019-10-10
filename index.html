@@ -11,17 +11,24 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div id="heading">
-            <header><h1 id="quiz-header">FICO Credit Scores Quiz</h1></header>
-        </div>
-        <main role='main' id="quiz-container">
+        <section id="heading">
+            <header>
+                <h1 id="quiz-header">FICO Credit Scores Quiz</h1>
+                <img src="images/myFICO.jpeg" id="FICO_logo" alt="myFICO Logo">
+            </header>
+        </section>
+        <main role='main'>
             <form id = "creditScore-quizApp-form">
-            <fieldset>
-                <h2 id="quiz-title">What you know about FICO Scores?</h2>
-                <img src="images/QuestionPic_1869413.jpg" id="quizformClipArt" 
-                height="380" width="500" alt="credit score clipart">
-                <h3 id="totalQuizQuestions">Total Questions: 10</h3>
-                <button type="button" id="startButton">Start the quiz</button>      
+            <fieldset class="quiz-content">
+                <section class="subTitle">
+                        <h2 id="quiz-title">What you know about FICO Scores?</h2>
+                </section>
+                <section id="picture">
+                    <img src="images/QuestionPic_1869413.jpg" class="quizformClipArt" height="380" width="500" alt="credit score clipart">
+                </section>
+                <button type="button" id="startButton">Start the quiz</button>
+                <section id="resultMessage"></section>
+                <section id="scoreTracker"></section>      
             </fieldset>
             </form> 
         </main>
