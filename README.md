@@ -1,0 +1,2 @@
+#General Info
+This project is a quiz app. Users click to start the quiz. There are total of 10 questions. Users are prompted 1 question at the a and must answer one of the multiple choices. At the end, users would get a final score and start a new quiz.

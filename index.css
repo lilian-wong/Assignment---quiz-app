@@ -4,14 +4,14 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-#quiz-header{
+.quiz-header{
     display:inline;
 }
 body{
     text-align: center;
     background-color:#464249;
 }
-#heading{
+.heading{
     background-color:#464249;
     padding-top: 20px;
     padding-bottom: 0px;
@@ -21,7 +21,7 @@ body{
     color: #ECF0F1;
 }
 
-#creditScore_logo{
+.creditScore_logo{
     height: 80px;
     width: 80px;
     border-radius: 80%;
@@ -40,7 +40,7 @@ body{
     text-align: right;  
 }
 
-#creditScore-quizApp-form{
+.creditScore-quizApp-form{
     display: flex;
     margin-top: 10px;
     margin-left: 8%;
@@ -49,7 +49,7 @@ body{
     background-color:white;
 
 }
-fieldset{
+.quiz-content{
     width: 80%;
     padding: 0;
     padding-top:20px;
@@ -86,7 +86,7 @@ p{
 
 button{
     box-shadow:inset 0px -3px 7px 0px #29bbff;
-	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background:linear-gradient(to bottom, #2dabf9 5%, #0369c2 100%);
 	border-radius:3px;
 	border:1px solid #0b0e07;
 	display:inline-block;
@@ -105,53 +105,69 @@ button{
     color:#1d0303;
 }
 
-@media all and (max-width: 646px){
-    #creditScore-quizApp-form{
+@media all and (max-width: 645px){
+    .creditScore-quizApp-form{
         margin-left: 3%;
         margin-right: 3%;
     }
-    #quiz-title{
-        font-size: 16px;
+    .quiz-title{
+        font-size: 15px;
         padding:0;
     }
-    .choices{
-        padding:10px;
-    }
+
 }
 @media all and (max-width: 520px){
     button{
         width: 100%;
     }
-    .choices{
-        padding:5px;
-    }
-    #creditScore-quizApp-form{
+
+    .creditScore-quizApp-form{
         width:100%;
         margin-left: auto;
         margin-right: auto;
-
+    }
+    .question, .choices{
+        font-size: 15px;
     }
 }
 @media all and (max-width: 365px){
-    #quiz-header{
+    .quiz-header{
         font-size: smaller;
     }
-    #quiz-title{
+    .quiz-title{
         font-size: 15px;
     }    
     
-    #creditScore_logo{
+    .creditScore_logo{
         height: 50px;
         width: 50px;
 
     }
+    .question, .choices{
+        font-size: 12px;
+    }
+    .totalQuizQuestions, .scoreTracker{
+        font-size: small;
+    }
 }
 @media all and (max-width: 320px){    
+    .heading{
+        height: 80%;
+    }
+    .quiz-title{
+        font-size: 13px;
+    }  
+    
     button{
         width: 80%;
+        font-size: smaller;
     }
-    #creditScore_logo{
+    .creditScore_logo{
         max-width: 100%;
         height:auto;
     }
+    .totalQuizQuestions, .scoreTracker{
+        font-size: smaller;
+    }
+
 }
