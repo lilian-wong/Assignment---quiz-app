@@ -49,7 +49,7 @@ const quizQuestions = [
         quizID: cuid(), 
         question:"Q4. Which of the following statement is true?", 
         choice:[
-        "Credit report can be transfered from European Countries to the US credit bureaus",
+        "Credit report can be transfered from European Countries to the US credit bureaus.",
         "Credit histories can be transfered from the US credit bureaus to Cananda.",
         "Credit report can be transfered from country to country.",
         "Credit report and credit histories do not transfer from country to country."],

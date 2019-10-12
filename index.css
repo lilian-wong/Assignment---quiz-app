@@ -28,8 +28,8 @@ body{
     vertical-align: middle;
 }
 
-.number-of-question{
-    font-size: smaller;
+.totalQuizQuestions, .number-of-question, .scoreTracker{
+    font-size: 15px;
 }
 .question{
     text-align: left;
@@ -52,20 +52,21 @@ body{
 .quiz-content{
     width: 80%;
     padding: 0;
-    padding-top:20px;
-    margin-top:10px;
-    margin: 0 auto;
+    padding-top:10px;
+    margin-top:5px;
+    margin: 0px auto;
     border: none;
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 
 .choices{
     text-align:left;
-    padding:20px;
+    padding:0px;
+    margin-bottom: 5px;
 }
 
 p{
-    padding: 10px;
+    padding: 8px;
 }
 
 .wrong-msg{
@@ -77,9 +78,9 @@ p{
 }
 
 .quizformClipArt{
-    padding:20px;
-    width: 300px;
-    height: 300px;
+    padding:0px;
+    width: 220px;
+    height: 220px;
     max-width: 100%;
     height:auto;
 }
@@ -132,7 +133,7 @@ button{
 }
 @media all and (max-width: 365px){
     .quiz-header{
-        font-size: smaller;
+        font-size: 16px;
     }
     .quiz-title{
         font-size: 15px;
@@ -143,7 +144,7 @@ button{
         width: 50px;
 
     }
-    .question, .choices{
+    #q_, .question, .choices{
         font-size: 12px;
     }
     .totalQuizQuestions, .scoreTracker{
@@ -162,6 +163,8 @@ button{
         width: 80%;
         font-size: smaller;
     }
+
+
     .creditScore_logo{
         max-width: 100%;
         height:auto;
@@ -169,5 +172,10 @@ button{
     .totalQuizQuestions, .scoreTracker{
         font-size: smaller;
     }
+    .creditScore-quizApp-form, .quiz-content{
+        width: 95%;
+        align-content: center;
+    }   
+    
 
 }

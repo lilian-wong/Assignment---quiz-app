@@ -89,13 +89,13 @@ function submitAnswer(){
         //Correct
         if(checkAnswer(selectedChoice)===true){
             scoreCard.addCorrect();
-            $('.radioChoices:checked').next().append('<span class="correct-msg"> Correct </span>');
+            $('.radioChoices:checked').next().append('<span class="correct-msg"><strong> Correct</strong></span>');
         }
         //Wrong
         else{
             scoreCard.addWrong();
-            $('.radioChoices:checked').next().append(`<span class="wrong-msg"> Incorrect 
-            - The correct answer is ${quizQuestions[questionIndex].ansID}, ${quizQuestions[questionIndex].answer}</span>`);
+            $('.radioChoices:checked').next().append(`<span class="wrong-msg"><strong> Incorrect</strong>
+            (<i>The correct answer is ${quizQuestions[questionIndex].ansID}, ${quizQuestions[questionIndex].answer}</i>)</span>`);
         }
         updateScoreElement();
         if(questionIndex<totalQuestion-1){
